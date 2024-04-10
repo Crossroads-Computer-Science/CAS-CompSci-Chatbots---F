@@ -16,6 +16,10 @@ def index():
 def progress():
     return render_template('progress-chat.html')
 
+@app.route('/prof')
+def prof():
+
+    return render_template("prof.html")
 
 @app.route("/chat")
 def chat_completion():
