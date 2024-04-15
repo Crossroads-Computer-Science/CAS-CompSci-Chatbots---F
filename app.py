@@ -25,6 +25,12 @@ def prof():
 def prep():
 
     return render_template("prep.html")
+
+@app.route('/ipa')
+def ipa():
+
+    return render_template("ipa.html")
+
 @app.route("/chat")
 def chat_completion():
     prompt = request.args.get('prompt')
