@@ -12,26 +12,27 @@
   <div class="text-center">
     <h1>Talk to a Harvard Professor</h1>
     <p>Talk about anything school related!</p>
-        </div>
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <div class="card">
-          <div class="card-body">
-
-            <textarea disabled class="form-control" id="comment" name="message" rows="10" cols="50"></textarea><br><br>
-
-
-
-
-           <label for="shouldSpeak">Speak</label>
-            <input type="checkbox" id="shouldSpeak">
-            <hr/>
-
-            <input class="form-control" type="text" id="prompt" name = "whatever" >
-
-
-
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <textarea disabled class="form-control mb-3" id="comment" name="message" rows="10"></textarea>
+          <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="shouldSpeak">
+            <label class="form-check-label" for="shouldSpeak">Speak</label>
           </div>
+          <input class="form-control mb-3" type="text" id="prompt" name="whatever" placeholder="Type your message here">
+          <button type="button" class="btn btn-primary" id="chatBtn">Chat</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
         </div>
       </div>
     </div>
