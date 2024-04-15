@@ -69,10 +69,10 @@
                     console.log(jsonData);
                     messageTextarea.value += "CHATBOT: " + jsonData + "\n";
 
-                     if(document.getElementById("souldSpeak").checked) {
-                         let tts = new SpeechSythesisUtterance();
+                     if(document.getElementById("shouldSpeak").checked) {
+                         let tts = new SpeechSynthesisUtterance();
                          tts.text = jsonData;
-                         window.SpeechSythesis.speak(tts);
+                         window.SpeechSynthesis.speak(tts);
             }
                     messageTextarea.scrollTop = messageTextarea.scrollHeight;
                     conversation.push(
