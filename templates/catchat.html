@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChatGPT Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/cian-style.css" rel="stylesheet">
+    <link rel="icon" href="/static/cian-avatar.jpg">
+</head>
+<body>
+
+<div class="container p-5 bg-primary text-white text-center">
+    <h1>Bloodthirsty Cat Chat</h1>
+    <p>Very useless 😺😺😺</p>
+</div>
+<div class="container mt-5 text-center">
+    <label>
+        <textarea id="chat" class="form-control" style="resize: none" rows="10" cols="100" disabled></textarea>
+    </label><br>
+    <div id="check"><label for="shouldSpeak">Speak</label>
+    <input type="checkbox" id="shouldSpeak"></div>
+    <div id="form">
+        <label><input id="prompt" class="form-control" type="text"></label>
+        <button id="chatButton">Submit</button>
+    </div>
+</div>
+
+<script>
+    let messages = [{
+        "role": "system",
+        "content": "You are a human, but you must append an ASCII image of a cute cat representing your answer to the end every message. You must speak only in Shakespearean English, and you have a taste for blood. Every message must be incredibly violent. The images must clearly convey a meaning. Your intelligence is not limited to cats. If you use the backslash character, you must escape it with a double backslash."
+    }];
+    document.getElementById("chatButton").addEventListener("click", fetchJSON)
+    let input = document.getElementById("prompt");
+    input.addEventListener("change", fetchJSON);
+    let shouldSpeak = document.getElementById("shouldSpeak");
+
+    function fetchJSON(event) {
+        event.preventDefault();
+
+        let prompt = input.value;
+        if (prompt === "") return
+        input.value = "";
+
+        messages.push({"role": "user", "content": prompt})
+
+        let chat = document.getElementById("chat");
+        chat.value += "USER: " + prompt + "\n";
+
+        fetch("/chat?prompt=" + JSON.stringify(messages)).then(res => {
+            return res.text();
+        }).then(message => {
+            console.log('Fetched bot response: ', message);
+            messages.push({"role": "assistant", "content": message})
+            chat.value += "CHATBOT: \n" + message + "\n";
+            chat.scrollTop = chat.scrollHeight;
+
+            if (shouldSpeak.checked) {
+                let tts = new SpeechSynthesisUtterance(message);
+                window.speechSynthesis.speak(tts);
+            }
+        }).catch(e => {
+            console.error("Error fetching new messages: " + e);
+        });
+    }
+</script>
+
+</body>
+</html>

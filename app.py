@@ -31,6 +31,11 @@ def ipa():
 
     return render_template("ipa.html")
 
+@app.route('/catchat')
+def catchat():
+
+    return render_template("catchat.html")
+
 @app.route("/chat")
 def chat_completion():
     prompt = request.args.get('prompt')

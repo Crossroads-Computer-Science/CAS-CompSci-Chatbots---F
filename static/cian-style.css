@@ -1,0 +1,34 @@
+html {
+    background-image: url("/static/cian-background.jpg");
+}
+
+body {
+    background: none;
+}
+
+.container {
+    margin: 2rem auto;
+    border-radius: 2rem;
+}
+
+#chat {
+    margin: 1rem auto;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+#check {
+    background:white;
+    border-radius: 1rem;
+    width: 50%;
+    margin: 1rem auto;
+    padding: 1rem 0;
+}
+
+#form {
+    width: 100%;
+}
+
+label {
+    width: 50%;
+}
