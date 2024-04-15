@@ -21,6 +21,10 @@ def prof():
 
     return render_template("prof.html")
 
+@app.route('/prep')
+def prep():
+
+    return render_template("prep.html")
 @app.route("/chat")
 def chat_completion():
     prompt = request.args.get('prompt')
