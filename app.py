@@ -63,7 +63,9 @@ def tutor_bot():
 
 
 
-
+@app.route("/LebronChat")
+def LebronChat():
+    return render_template("LebronChat.html")
 
 
 @app.route("/chat")
