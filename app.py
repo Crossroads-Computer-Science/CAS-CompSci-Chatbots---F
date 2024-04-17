@@ -41,6 +41,31 @@ def thanos_bot():
 
     return render_template("thanos_bot.html")
 
+
+
+
+@app.route('/tutor_bot')
+
+
+
+
+
+
+def tutor_bot():
+
+
+
+
+
+    
+
+    return render_template("tutor_bot.html")
+
+
+
+
+
+
 @app.route("/chat")
 def chat_completion():
     prompt = request.args.get('prompt')
