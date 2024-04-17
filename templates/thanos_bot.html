@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Self Reflection Chatbot</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <body style="background: dimgrey">
+    <div class="jumbotron text-center" style="background: slategrey">
+        <img src="/static/ThanosPFP.jpeg" style="border-radius: 10rem; width: 10rem"/>
+        <h1>Thanos Chatbot</h1>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="text-center col-sm-8" style="padding: 1rem; border-radius: 10px; background: grey">
+          <h3>Input your prompt below</h3>
+        </div>
+      </div>
+
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8" style="padding-top: 2rem">
+        <div class="row text-center">
+          <input type="text" id="input" name="input" class="text-center" style="padding: 1.5rem; width: calc(100%); border-radius: 10px; background: grey"/>
+          <div style="padding: 2rem"></div>
+          <button type="button" class="btn btn-primary" style="padding: 3rem" id="chatBtn">Go</button>
+        </div>
+        <div style="padding: 1rem;"></div>
+        <div class="text-center" id="comment" style="padding: 10rem; background: grey; border-radius: 10px"></div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
+
+<script>
+
+  document.getElementById('chatBtn').addEventListener('click', fetchJsonData)
+  let messages = [{"role":"system", "content":"You are a normal Chatbot assistant, but you speak like Thanos/speak in Thanos quotes."}];
+
+  function testing(){
+    alert("It Works!!!");
+  }
+
+  function fetchJsonData(event) {
+    event.preventDefault();
+    let promptInput = document.getElementById('input');
+    let prompt = promptInput.value;
+    console.log(prompt);
+    promptInput.value = "";
+
+    messages.push({"role":"user", "content": prompt})
+
+    let textArea = document.getElementById('comment')
+    textArea.innerText += "USER: " + prompt + "\n\n";
+
+    fetch('/chat?prompt='+JSON.stringify(messages))
+            .then(response => {return response.text();})
+            .then(message => {
+              console.log('Fetched JSON data:', message);
+              textArea.innerText += "CHATBOT: " + message + "\n\n\n ";
+              messages.push({"role":"assistant", "content": message})
+              console.log(textArea.innerText);
+              textArea.scrollTop = textArea.scrollHeight;
+            })
+            .catch(error => {console.error('Error fetching JSON:', error);})
+  }
+</script>

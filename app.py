@@ -36,6 +36,11 @@ def catchat():
 
     return render_template("catchat.html")
 
+@app.route('/thanos_bot')
+def thanos_bot():
+
+    return render_template("thanos_bot.html")
+
 @app.route("/chat")
 def chat_completion():
     prompt = request.args.get('prompt')
