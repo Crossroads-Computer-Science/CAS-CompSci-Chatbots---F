@@ -35,6 +35,10 @@ def ipa():
 
     return render_template("ipa.html")
 
+@app.route('/sokka')
+def sokka():
+    return render_template("sokka.html")
+
 @app.route('/catchat')
 def catchat():
 
