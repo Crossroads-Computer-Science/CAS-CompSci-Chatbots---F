@@ -71,6 +71,9 @@ def LebronChat():
 def senator():
     return render_template("senator.html")
 
+@app.route("/fish")
+def fish():
+    return render_template("fish.html")
 
 @app.route("/chat")
 def chat_completion():
