@@ -60,7 +60,9 @@ def tutor_bot():
 def index():
     return render_template('progress-chat.html', image_path=IMAGE_PATH)
 
-
+@app.route("/cookbook")
+def cookbook():
+    return render_template("cookbook.html")
 @app.route("/LebronChat")
 def LebronChat():
     return render_template("LebronChat.html")
