@@ -67,6 +67,10 @@ def tutor_bot():
 def LebronChat():
     return render_template("LebronChat.html")
 
+@app.route("/senator")
+def senator():
+    return render_template("senator.html")
+
 
 @app.route("/chat")
 def chat_completion():
