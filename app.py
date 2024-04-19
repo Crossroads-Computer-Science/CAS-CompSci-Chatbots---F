@@ -26,6 +26,10 @@ def prep():
 
     return render_template("prep.html")
 
+@app.route('/sketch')
+def sketch():
+    return render_template("sketch.html")
+
 @app.route('/ipa')
 def ipa():
 
