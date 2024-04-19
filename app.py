@@ -53,22 +53,12 @@ def thanos_bot():
 
 
 @app.route('/tutor_bot')
-
-
-
-
-
-
 def tutor_bot():
-
-
-
-
-
-    
-
     return render_template("tutor_bot.html")
 
+@app.route('/progress-chat')
+def index():
+    return render_template('progress-chat.html', image_path=IMAGE_PATH)
 
 
 @app.route("/LebronChat")
