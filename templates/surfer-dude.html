@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+    <body>
+    <textarea disabled rows = "10" id = "comment"></textarea>
+    <input type="text" id="prompt"/>
+    <button type="button" id="chatBtn">Chat</button>
+<script>
+    document.getElementByID('prompt')
+        .addEventListener('change', fetchJsonData);
+    document.getElementByID('chatBtn')
+        .addEventListener9('click', fetchJsonData);
+    let conversation = [
+        {"role": "system", "content": "Tell me a dad joke"}
+    ]
+
+    function fetchJsonData(event) {
+        event.preventDefault()
+        let promptInput = document.getElementByID('prompt')
+        let prompt = promptInput.value
+
+        let mytextarea = document.getElementByID('comment')
+        mytextarea.value += "USER:" + prompt + "/n";
+
+        fetch('/chat?prompt=' + prompt)
+            .then(response => {
+                return response.text();
+            })
+            .then(Json => {
+                console.log(jsonData)
+                let mytextarea = document.getElementByID('comment')
+                mytextarea.value += "CHATBOT:" + jsonData + "/n";
+            });
+    }
+
+
+</script>
+</body>
+</html>

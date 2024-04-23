@@ -53,7 +53,9 @@ def thanos_bot():
 
     return render_template("thanos_bot.html")
 
-
+@app.route('/surfer')
+def surfer():
+    return render_template("surfer-dude.html")
 
 
 @app.route('/tutor_bot')
