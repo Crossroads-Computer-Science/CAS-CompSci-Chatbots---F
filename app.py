@@ -21,6 +21,10 @@ def prof():
 
     return render_template("prof.html")
 
+@app.route('/batchat')
+def batchat():
+    return render_template("batchat.html")
+
 @app.route('/prep')
 def prep():
 
